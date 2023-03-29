@@ -17,11 +17,11 @@ export class AutenticationService {
 
   private userloggedIn: boolean = false;
   private loginInfo: WxLoginInfo = new WxLoginInfo;
-  private USER_STORE_KEY = 'glass-monitor-data';
+  private USER_STORE_KEY = 'glass-rosconometro-data';
 
 
   constructor(private route: Router, private http: HttpClient ,private confluxApi: ConfluxApiService) {
-    this.loginInfo = new WxLoginInfo;
+    //this.loginInfo = new WxLoginInfo;
     this.userloggedIn = false;
     this.updateUserFromLocal();
   }
@@ -62,7 +62,7 @@ export class AutenticationService {
     }
   }
 
-  // metodo para recuerar el token
+  // metodo para recuperar el token
 
   public getUserToken(): string {
 

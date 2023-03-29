@@ -1,0 +1,111 @@
+
+:host{
+  display: flex;
+  //flex: 1 1;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*.card {
+  border-color: red;
+  border-style: solid;
+}
+
+.auth-card {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 1px 15px rgba(0,0,0,.04),0 1px 6px rgba(0,0,0,.04);
+}
+
+.rounded .card.auth-card {
+  border-top-left-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+}
+
+.card {
+  border: initial;
+  background: #fff;
+}
+
+/*.auth-card .image-side {
+ 
+  background: url('https://vien-angular.coloredstrategies.com/balloon.ce8d76b9ee30cc857c70.jpg') no-repeat top;
+      background-size: auto;
+  background-size: cover;
+  padding: 80px 40px;
+}*/
+
+/*.auth-card .form-side {
+  //width: 60%;
+  padding: 80px;
+}*/
+
+
+/*.logo-single {
+  width: 110px;
+  height: 35px;
+  background: url('https://vien-angular.coloredstrategies.com/black.e94a3124014b51f17d91.svg') no-repeat;
+      background-position-x: 0%;
+      background-position-y: 0%;
+      background-size: auto;
+  background-position: 50%;
+  display: inline-block;
+  margin-bottom: 60px;
+  background-size: contain;
+}*/
+
+h2 {
+ text-transform: uppercase;
+}
+
+
+.b-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+
+  .r-logo {
+  //  color: darkgrey;
+    
+    
+    .i-logo {
+      transform: scale(2.6);
+      margin-right: 15px;
+    }
+
+  }
+
+  .r-logo-text1 {
+   // color: mediumpurple;
+    font-size: 46px;
+  }
+
+  .r-logo-text2 {
+    color: darkgrey;
+    font-size: 46px;
+    font-weight: bold;
+  }
+
+  .r-logo-text3 {
+    color: darkgrey;
+    font-size: 18px;
+  }
+
+}
+
+
+.action-btn{
+  width: 50%;
+}

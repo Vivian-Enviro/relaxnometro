@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,13 +17,21 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
    /// NgbModule,
    // BrowserAnimationsModule,
-   // HttpClientModule,
+    HttpClientModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+   /* AuthGuard,
+   /* RoleGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    },*/
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
