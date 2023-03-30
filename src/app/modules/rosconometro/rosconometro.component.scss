@@ -4,15 +4,19 @@
     flex: 1 1 auto;
     padding: 1vh 1vh 1vw 1vw;
 
-	//font-size:1vh;
+	font-size:1vw;
 }
 
 h1{
-	//font-size:4vh;
+	font-size:4vh;
 }
 
 h3{
-	//font-size:3vh;
+	font-size:3vh;
+}
+
+h4{
+	font-size:2vh;
 }
 //-----------------------------------------------------------------------------
 //								$VARIABLES
@@ -431,16 +435,23 @@ button{
 .manager-box {
 	position: absolute; 
 	//bottom: 2vh; 
-	top:2vh;
+	top:7vh;
 	right: 4vw;//2em;
 } 
+
+.nextPlayer{
+	position: absolute;
+	top:2vh;
+	right: 4vw;//2em;
+}
 
 .otherPlayer{
 	position: absolute;
 	//right: 2vw;//2em;
 	//left: 2vw;
 	//top: 10vh;//4em;
-	top: 5em;
+	//top: 5em;
+	top: 11vh;
 	text-align: center;
 	color: $c-white;
 
@@ -509,12 +520,18 @@ button{
 	}
 }
 
-@media only screen  
-	and (min-width : 320px)  
-	and (max-width : 480px) {  
-	/* Styles */  
-	//bottom: 5vh;
-	//top: 70vh;
+div.hidden{
+	display: none;
+}
+
+
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {  
+	
+	:host{
+		font-size:4vw;
+	}
+
 	.wildcard{
 		//top: 0;
 		//bottom: 18vh;
@@ -538,6 +555,10 @@ button{
 		width: 15vw;
 		height: 5vh;
 	}
+
+	.nextPlayer{
+		width: 15vw;
+	}
 	
 	.otherPlayer{
 		width: 40vw;
@@ -547,10 +568,12 @@ button{
 } 
 
 @media only screen  
-	and (min-width : 481px)  
-	and (max-width : 720px)
-	{
-	
+and (min-width : 481px)  
+and (max-width : 720px)	{
+	:host{
+		font-size:3vh;
+	}
+
 	.player-name-text{
 		width: 25vw;
 	}
@@ -560,30 +583,30 @@ button{
 		height: 5vh;
 	}
 
+	.nextPlayer{
+		width: 18vw;
+	}
+
 	.otherPlayer{
 		padding: 0 1vw;
+
+		top: 10vw;
 	}
 } 
 
-@media only screen  
-	and (min-width : 481px)  
-	
-	{  
-	/* Styles */  
-	//bottom: 5vh;
-	//top: 70vh;
+@media only screen  and (min-width : 481px)  {  
 	.wildcard{
-		//top: 0;
-		//bottom: 10vh;
-
-		//margin-left: 0;
 		right: 3vw;
-		//left: 10vw;
-		//top: 30%;
 		margin-left: $h-score;
-		//left: 2vw;//2em;
 	}
 	
+	.manager-box{
+		width: 8vw;
+		//height: 5vh;
+	}
+	.nextPlayer{
+		width: 8vw;
+	}
 	
 } 
 

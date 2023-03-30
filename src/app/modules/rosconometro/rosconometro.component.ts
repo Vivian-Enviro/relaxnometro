@@ -247,13 +247,15 @@ export class RosconometroComponent implements OnInit {
   onNextPlayer(gameIndex:number){
     for (let i = 0; i<this.players.length; i++){
       let player = this.players.at(i);
-      player.get("active")!.setValue(i!=gameIndex);
+      console.log("Player:", i, " widcards:", player.get("wildcards").value);
+      player.get("active")!.setValue(i===gameIndex);
       player.get("isTimerPaused")!.setValue(true);
     }
   }
 
-  onWildCardChange(gameIndex:number, itemIndex : any){
+  onWildCardChange(gameIndex:number, itemIndex : number){
     let player = this.players.at(gameIndex);
+    console.log("Player:", gameIndex, " widcards:", player.get("wildcards").value);
     (player.get("wildcards") as FormArray).at(itemIndex).setValue(!(player.get("wildcards") as FormArray).at(itemIndex).value);
   }
 
