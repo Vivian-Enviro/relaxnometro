@@ -533,22 +533,12 @@ div.hidden{
 	}
 
 	.wildcard{
-		//top: 0;
-		//bottom: 18vh;
-		//margin-left: 0;
-		//right: 3vw;
-		//left: 50vw;
-		//margin-right: $h-score;
 		right: 2vw;//2em;
-		//left: 50%;
-		//transform: translateX(-50%);
-		//display: flex;
-		//max-width: 20vw;
 		width: 45vw;
 	}
 
 	.player-name-text{
-		width: 40vw;
+		width: 45vw;
 	}
 
 	.manager-box{
@@ -581,6 +571,7 @@ and (max-width : 720px)	{
 	.manager-box{
 		width: 18vw;
 		height: 5vh;
+		top: 9vh
 	}
 
 	.nextPlayer{
@@ -603,6 +594,7 @@ and (max-width : 720px)	{
 	.manager-box{
 		width: 8vw;
 		//height: 5vh;
+		
 	}
 	.nextPlayer{
 		width: 8vw;
