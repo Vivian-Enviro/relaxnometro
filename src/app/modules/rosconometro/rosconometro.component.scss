@@ -8,15 +8,16 @@
 }
 
 h1{
-	font-size:4vh;
+	font-size:3vh;
 }
 
 h3{
-	font-size:3vh;
+	font-size:2vh;
 }
 
 h4{
 	font-size:2vh;
+	text-transform: capitalize;
 }
 //-----------------------------------------------------------------------------
 //								$VARIABLES
@@ -539,6 +540,8 @@ div.hidden{
 
 	.player-name-text{
 		width: 45vw;
+		height: 10vh;
+		padding-top: 1vh;
 	}
 
 	.manager-box{
@@ -554,6 +557,10 @@ div.hidden{
 		width: 40vw;
 		left: 40vw;
 		top: 1vh;
+	}
+
+	h1{
+		font-size: 5vw;
 	}
 } 
 
@@ -598,6 +605,11 @@ and (max-width : 720px)	{
 	}
 	.nextPlayer{
 		width: 8vw;
+	}
+	
+	.player-name-text{
+		padding-bottom: 1vh;
+		padding-top: 1vh;
 	}
 	
 } 

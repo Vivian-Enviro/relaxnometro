@@ -97,7 +97,7 @@ export class RosconometroComponent implements OnInit {
       player2               : ["Jugador 2", [Validators.required]],
       seconds               : [140, [Validators.required]],
       playerCount           : [this.game.playerCount, [Validators.required]],
-      wildcard              : [2, [Validators.required]],
+      wildcard              : [1, [Validators.required]],
 
       letterContains        : this._formBuilder.array([
 
