@@ -247,7 +247,7 @@ export class RosconometroComponent implements OnInit {
   onNextPlayer(gameIndex:number){
     for (let i = 0; i<this.players.length; i++){
       let player = this.players.at(i);
-      player.get("active")!.setValue(i!==gameIndex);
+      player.get("active")!.setValue(i!=gameIndex);
       player.get("isTimerPaused")!.setValue(true);
     }
   }

@@ -45,9 +45,9 @@
               
               <fieldset class="otherPlayer" [class.hidden]="player.get('active')!.value !== false" >
                   
-                  <small style="display:none">En espera: {{player.get('name')!.value}}</small>
+                  <small >En espera: </small>
                   <h4 class="text-center " >
-                    En espera: {{player.get('name')!.value}}
+                    {{player.get('name')!.value}}
                   </h4>
                  
                   <label class=" timer ">
@@ -56,13 +56,13 @@
                   <label class="  corrects">
                       {{player.get('correctAnswers')!.value}}
                   </label>
-                  <label class="  fails">
+                    <label class="  fails">
                       {{player.get('failAnswers')!.value}}
-                  </label>  
+                    </label>  
                       
-                  <button class="btn btn-xs  btn-primary m-0 btn-reload" (click)="onNextPlayer(i)" style="display:none">
+                    <button class="btn btn-xs  btn-primary m-0 btn-reload" (click)="onNextPlayer(i)" style="display:none">
                       <i class="fas fa-sync"></i>                        
-                  </button>
+                    </button>
                   
               </fieldset>
 
@@ -85,39 +85,39 @@
                     <label class="col-10 game-over-text circle1" *ngIf="player.get('gameOver')!.value === true">
                        Juego terminado
                     </label>
-                  <div class="" formArrayName="playerItems" >
+                    <div class="" formArrayName="playerItems" >
                       
-                          <div *ngFor="let item of getPlayerItems(player)!.controls; let j = index;" formGroupName="{{j}}" [class.hidden]="item.get('status')!.value !== 1">
+                        <div *ngFor="let item of getPlayerItems(player)!.controls; let j = index;" formGroupName="{{j}}" [class.hidden]="item.get('status')!.value !== 1">
                              
-                              <label class="col-10 extrasize circle1">
-                                  {{item.get('letter')!.value}}
-                              </label>
+                            <label class="col-10 extrasize circle1">
+                                {{item.get('letter')!.value}}
+                            </label>
 
-                              <div class="manager-box" >
-                                  <div class="row">
-                                      <button class="btn btn-md  btn-primary col-12 m-0" (click)="onStartPlay(i)" *ngIf="player.get('isTimerPaused')!.value">
-                                          <i class="fas fa-play"  ></i>  
-                                      </button>
-                                      <button class="btn btn-md  btn-outline-danger col-12 m-0" (click)="onStartPlay(i)" *ngIf="!player.get('isTimerPaused')!.value">
-                                          <i class="fas fa-pause"></i>
-                                      </button>
-                                      <button class="btn btn-md  btn-success col-4" (click)="onAnswer(i,j)">
-                                          <i class="fas fa-check"></i>
-                                      </button>
-                                      <button class="btn btn-md  btn-warning col-4" (click)="onNextTime(i,j)">
-                                          <i class="fas fa-pause"></i>
-                                      </button>
-                                      <button class="btn btn-md btn-danger col-4" (click)="onFail(i,j)">
-                                          <i class="fas fa-times"></i>
-                                      </button>
-                                      <button class="btn btn-xs  btn-primary m-0 btn-reload" (click)="onNextPlayer(i)" >
+                            <div class="manager-box" >
+                                <div class="row">
+                                    <button class="btn btn-md  btn-primary col-12 m-0" (click)="onStartPlay(i)" *ngIf="player.get('isTimerPaused')!.value">
+                                        <i class="fas fa-play"  ></i>  
+                                    </button>
+                                    <button class="btn btn-md  btn-outline-danger col-12 m-0" (click)="onStartPlay(i)" *ngIf="!player.get('isTimerPaused')!.value">
+                                        <i class="fas fa-pause"></i>
+                                    </button>
+                                    <button class="btn btn-md  btn-success col-4" (click)="onAnswer(i,j)">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-md  btn-warning col-4" (click)="onNextTime(i,j)">
+                                        <i class="fas fa-pause"></i>
+                                    </button>
+                                    <button class="btn btn-md btn-danger col-4" (click)="onFail(i,j)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <button class="btn btn-xs  btn-primary m-0 btn-reload" (click)="onNextPlayer(i)" >
                                         <i class="fas fa-sync"></i>                        
-                                      </button>
-                                  </div>
-                              </div>
+                                    </button>
+                                </div>
+                            </div>
                               
                           
-                          </div>
+                        </div>
                      
                   </div>
 
