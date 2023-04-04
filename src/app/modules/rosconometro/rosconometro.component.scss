@@ -146,12 +146,23 @@ button{
 }
 
 .extrasize{
-    font-size: 15vh;//5rem;
+    font-size: 25vh;//5rem;
     text-align: center;
+	//background-color: #8e001c;
+	//border-style: solid;
+	//padding: 0;
+	//translate: -10vh;
+
+	@media only screen  
+		and (min-width : 320px)  
+		and (max-width : 480px) {  
+			//background-color: #8e001c;
+			font-size: 12vh;
+	}
 }
 
 .game-over-text{
-    font-size: 4vh;//5rem;
+    font-size: 3.5vh;//5rem;
     text-align: center;
 	display: flex;
 	flex-wrap: wrap;
@@ -179,6 +190,7 @@ button{
 .player-name-text{
 	text-transform: uppercase;
 	background-color: white;
+	//background-color: #004b8d;
 	//width: 20%;
 	display: inline-block;
 	//padding: 1vh;
@@ -190,15 +202,34 @@ button{
 	width: 2*$s-timer;
 	width: 15vw;
 
+	border-color: #004b8d;
+
+	border-color: lightgray;
+	//color: white;
+	//color: #004b8d;
+
+	//border-style: none;
+
 	h3 {
 		margin: 0;
 	}
 
 	h1{
 		margin: auto;
+		color: #004b8d;
+
 	}
 }
 
+.player-name-text.orange{
+	//border-color:darkgray;
+	//border-color:#b64926;
+
+	h1{
+		color: #b64926;
+	}
+	
+}
 
 
 //-----------------------------------------------------------------------------
@@ -278,7 +309,8 @@ button{
 		@include on-circle($nb-items, $s-circle-mobile, $s-item);
 		left: 50%;
 		transform: translateX(-50%);
-		margin-top: 5vh;
+		margin-top: 9vh;
+		margin-left: 2vw;
 	} 
 
 	.item {
@@ -336,24 +368,27 @@ button{
 
 .circle1 {
     float: left;
-    width: 20vh;
-    height: 20vh;
+    width: 40vh;//20vh;
+    height: 40vh;//20vh;
    // margin: 20px;
     shape-outside: circle();
     clip-path: circle();
     position: absolute;
-    left: calc(50% - 10vh);
-	top: calc(50% - 10vh);
+    left: calc(50% - 20vh);
+	top: calc(50% - 20vh);
 
 	@media only screen  
 		and (min-width : 320px)  
 		and (max-width : 480px) {  
 		/* Styles */  
-		top:  $s-circle/3;
+		top:  $s-circle/3 + 4vh;
 		left: 50%;
 		transform: translateX(-50%);
 		//margin-top: 5vh;
 		//background-color: #b64926;
+
+		width: 30vw;//20vh;
+    	height: 30vw;//20vh;
 	} 
 
 	//background-color: #004b8d;
@@ -466,8 +501,17 @@ button{
 
 	h3, h4,
 	small {
-		color: black;
+		color: #004b8d; //black;
+		color:black;
 		margin-bottom: 0;
+	}
+
+	h4{
+		color: #004b8d; 
+	}
+
+	h4{
+		text-transform: uppercase;
 	}
 
 	.btn-reload{
@@ -489,6 +533,15 @@ button{
 		background-image: radial-gradient(circle, $c-failure, $c-failure-darker);
 		width: 33%;
 	}
+}
+
+.otherPlayer.orange{
+
+	/*small, */h4{
+		//border-color:#b64926;
+		color: #b64926;
+	}
+	
 }
 
 .wildcard{
@@ -540,7 +593,7 @@ div.hidden{
 
 	.player-name-text{
 		width: 45vw;
-		height: 10vh;
+		//height: 10vh;
 		padding-top: 1vh;
 	}
 

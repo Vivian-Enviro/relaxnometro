@@ -8,12 +8,12 @@
                     <h2 class="col-form-label ">Configuración del Juego</h2>
                     <label class="form-group has-float-label ">
                         <input type="text" class="form-control" formControlName="player1"  />
-                        <span>Jugador 1 </span>
+                        <span>Silla Azul</span>
                         <small class="invalid-feedback">Campo obligatorio</small>
                     </label>
                     <label class="form-group has-float-label ">
                         <input type="text" class="form-control" formControlName="player2"  />
-                        <span>Jugador 2 </span>
+                        <span>Silla Naranja</span>
                         <small class="invalid-feedback">Campo obligatorio</small>
                     </label>
                     <label class="form-group has-float-label  col-md-6">
@@ -37,7 +37,7 @@
         <div  formArrayName="players" style=" flex: 1 1;" *ngIf="startedGame">
             <ng-container   *ngFor="let player of players.controls; let i = index;" formGroupName="{{i}}" >
               
-                <fieldset class="otherPlayer" [class.hidden]="player.get('active')!.value !== false" >
+                <fieldset class="otherPlayer" [class.hidden]="player.get('active')!.value !== false" [ngClass]="{'orange' : i!==0}">
                     <small >En espera:</small>
                     <h4 class="text-center " >
                         {{player.get('name')!.value}}
@@ -53,7 +53,7 @@
                     </label>  
                 </fieldset>
 
-                <div class="nextPlayer" [class.hidden]="player.get('active')!.value !== false">
+                <div class="nextPlayer" [class.hidden]="player.get('active')!.value !== false" >
                     <div class="row">
                         <button class="btn btn-xs  btn-outline-secondary m-0 btn-reload col-12" (click)="onNextPlayer(i)" >
                             <i class="fas fa-sync"></i>                        
@@ -72,7 +72,7 @@
               
                 <div style="height: 100%;" [class.hidden]="player.get('active')!.value === false" >
               
-                    <div class="player-name-text">
+                    <div class="player-name-text"  [ngClass]="{'orange' : i!==0}">
                         <h3 >Jugando</h3>
                         <div class="w100" ></div>
                         <h1 >{{player.get('name')!.value}}</h1>
@@ -85,7 +85,7 @@
                         <div *ngFor="let item of getPlayerItems(player)!.controls; let j = index;" formGroupName="{{j}}" [class.hidden]="item.get('status')!.value !== 1">
                              
                             <label class="col-10 extrasize circle1">
-                                {{item.get('letter')!.value}}
+                                {{item.get('letter')!.value}} 
                             </label>
 
                             <div class="manager-box" >
