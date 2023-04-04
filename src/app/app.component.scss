@@ -4,9 +4,21 @@
     flex: 1 1 auto;
     padding: 1vh 1vh 1vw 1vw;
 
-	
+	font-size:1vw;
 }
 
+h1{
+	font-size:3vh;
+}
+
+h3{
+	font-size:2vh;
+}
+
+h4{
+	font-size:2vh;
+	text-transform: capitalize;
+}
 //-----------------------------------------------------------------------------
 //								$VARIABLES
 //-----------------------------------------------------------------------------
@@ -134,12 +146,23 @@ button{
 }
 
 .extrasize{
-    font-size: 15vh;//5rem;
+    font-size: 25vh;//5rem;
     text-align: center;
+	//background-color: #8e001c;
+	//border-style: solid;
+	//padding: 0;
+	//translate: -10vh;
+
+	@media only screen  
+		and (min-width : 320px)  
+		and (max-width : 480px) {  
+			//background-color: #8e001c;
+			font-size: 12vh;
+	}
 }
 
 .game-over-text{
-    font-size: 4vh;//5rem;
+    font-size: 3.5vh;//5rem;
     text-align: center;
 	display: flex;
 	flex-wrap: wrap;
@@ -167,15 +190,25 @@ button{
 .player-name-text{
 	text-transform: uppercase;
 	background-color: white;
+	//background-color: #004b8d;
 	//width: 20%;
 	display: inline-block;
-	padding: 1vh;
+	//padding: 1vh;
 	text-align: center;
 	border-radius: 15px;
 	border-style: solid;
 	border-width: 0.5px;
 
 	width: 2*$s-timer;
+	width: 15vw;
+
+	border-color: #004b8d;
+
+	border-color: lightgray;
+	//color: white;
+	//color: #004b8d;
+
+	//border-style: none;
 
 	h3 {
 		margin: 0;
@@ -183,9 +216,20 @@ button{
 
 	h1{
 		margin: auto;
+		color: #004b8d;
+
 	}
 }
 
+.player-name-text.orange{
+	//border-color:darkgray;
+	//border-color:#b64926;
+
+	h1{
+		color: #b64926;
+	}
+	
+}
 
 
 //-----------------------------------------------------------------------------
@@ -265,7 +309,8 @@ button{
 		@include on-circle($nb-items, $s-circle-mobile, $s-item);
 		left: 50%;
 		transform: translateX(-50%);
-		margin-top: 5vh;
+		margin-top: 9vh;
+		margin-left: 2vw;
 	} 
 
 	.item {
@@ -323,24 +368,27 @@ button{
 
 .circle1 {
     float: left;
-    width: 20vh;
-    height: 20vh;
+    width: 40vh;//20vh;
+    height: 40vh;//20vh;
    // margin: 20px;
     shape-outside: circle();
     clip-path: circle();
     position: absolute;
-    left: calc(50% - 10vh);
-	top: calc(50% - 10vh);
+    left: calc(50% - 20vh);
+	top: calc(50% - 20vh);
 
 	@media only screen  
 		and (min-width : 320px)  
 		and (max-width : 480px) {  
 		/* Styles */  
-		top:  $s-circle/3;
+		top:  $s-circle/3 + 4vh;
 		left: 50%;
 		transform: translateX(-50%);
 		//margin-top: 5vh;
 		//background-color: #b64926;
+
+		width: 30vw;//20vh;
+    	height: 30vw;//20vh;
 	} 
 
 	//background-color: #004b8d;
@@ -349,8 +397,8 @@ button{
 /* Scoreboard
  * ----------------------------------------------------------------------------- */
  .scoreboard {
-	margin: 0 0 1em 2em;
-	padding: 0;
+//	margin: 0 0 1em 2em;
+//	padding: 0;
 	list-style: none;
 	
 	//border-style: solid;
@@ -361,6 +409,10 @@ button{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+//	border-style: double;
+
+//	max-width: 15%;
 
 
 	.timer {
@@ -418,26 +470,48 @@ button{
 
 .manager-box {
 	position: absolute; 
-	bottom: 2vh; 
+	//bottom: 2vh; 
+	top:7vh;
 	right: 4vw;//2em;
 } 
 
+.nextPlayer{
+	position: absolute;
+	top:2vh;
+	right: 4vw;//2em;
+}
+
 .otherPlayer{
 	position: absolute;
-	right: 2vw;//2em;
-	top: 2vh;//4em;
+	//right: 2vw;//2em;
+	//left: 2vw;
+	//top: 10vh;//4em;
+	//top: 5em;
+	top: 11vh;
 	text-align: center;
 	color: $c-white;
 
 	border-style: solid !important;
-	background-color: #fff;
+	//background-color: #fff;
 	padding: 1vh;
 	border-radius: 15px;
 
-	h3,
+	width: 15vw;
+	padding: 0 2em;
+
+	h3, h4,
 	small {
-		color: black;
+		color: #004b8d; //black;
+		color:black;
 		margin-bottom: 0;
+	}
+
+	h4{
+		color: #004b8d; 
+	}
+
+	h4{
+		text-transform: uppercase;
 	}
 
 	.btn-reload{
@@ -461,11 +535,27 @@ button{
 	}
 }
 
+.otherPlayer.orange{
+
+	/*small, */h4{
+		//border-color:#b64926;
+		color: #b64926;
+	}
+	
+}
+
 .wildcard{
 	position: absolute;
 	
 	text-align: center;
 	//margin-left: 4em;
+
+	//border-style: dotted;
+	width: 25vw;
+	display: flex;
+	flex-direction: row-reverse;
+
+	bottom: 4vh;
 	
 	.item-wildcard  {
 		border-style: solid;
@@ -484,43 +574,95 @@ button{
 	}
 }
 
-@media only screen  
-	and (min-width : 320px)  
-	and (max-width : 480px) {  
-	/* Styles */  
-	//bottom: 5vh;
-	//top: 70vh;
+div.hidden{
+	display: none;
+}
+
+
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {  
+	
+	:host{
+		font-size:4vw;
+	}
+
 	.wildcard{
-		//top: 0;
-		bottom: 18vh;
-		//margin-left: 0;
-		//right: 3vw;
-		//left: 50vw;
-		//margin-right: $h-score;
 		right: 2vw;//2em;
-		//left: 50%;
-		//transform: translateX(-50%);
-		//display: flex;
-		//max-width: 20vw;
+		width: 45vw;
+	}
+
+	.player-name-text{
+		width: 45vw;
+		//height: 10vh;
+		padding-top: 1vh;
+	}
+
+	.manager-box{
+		width: 15vw;
+		height: 5vh;
+	}
+
+	.nextPlayer{
+		width: 15vw;
 	}
 	
+	.otherPlayer{
+		width: 40vw;
+		left: 40vw;
+		top: 1vh;
+	}
+
+	h1{
+		font-size: 5vw;
+	}
 } 
 
 @media only screen  
-	and (min-width : 481px)  
-	{  
-	/* Styles */  
-	//bottom: 5vh;
-	//top: 70vh;
+and (min-width : 481px)  
+and (max-width : 720px)	{
+	:host{
+		font-size:3vh;
+	}
+
+	.player-name-text{
+		width: 25vw;
+	}
+
+	.manager-box{
+		width: 18vw;
+		height: 5vh;
+		top: 9vh
+	}
+
+	.nextPlayer{
+		width: 18vw;
+	}
+
+	.otherPlayer{
+		padding: 0 1vw;
+
+		top: 10vw;
+	}
+} 
+
+@media only screen  and (min-width : 481px)  {  
 	.wildcard{
-		//top: 0;
-		//bottom: 10vh;
-		//margin-left: 0;
-		//right: 3vw;
-		//left: 10vw;
-		top: 30%;
+		right: 3vw;
 		margin-left: $h-score;
-		left: 2vw;//2em;
+	}
+	
+	.manager-box{
+		width: 8vw;
+		//height: 5vh;
+		
+	}
+	.nextPlayer{
+		width: 8vw;
+	}
+	
+	.player-name-text{
+		padding-bottom: 1vh;
+		padding-top: 1vh;
 	}
 	
 } 
