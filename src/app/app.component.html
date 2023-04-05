@@ -38,10 +38,11 @@
             <ng-container   *ngFor="let player of players.controls; let i = index;" formGroupName="{{i}}" >
               
                 <fieldset class="otherPlayer" [class.hidden]="player.get('active')!.value !== false" [ngClass]="{'orange' : i!==0}">
-                    <small >En espera:</small>
-                    <h4 class="text-center " >
+                    <small  style="display: none;" >En espera:</small>
+                    <h4 class="text-center " style="display: none;">
                         {{player.get('name')!.value}}
                     </h4>
+                    <div class="w100"></div>
                     <label class=" timer ">
                         {{player.get('playTime')!.value | number: '1.0-0'}}
                     </label>
@@ -53,12 +54,32 @@
                     </label>  
                 </fieldset>
 
-                <div class="nextPlayer" [class.hidden]="player.get('active')!.value !== false" >
-                    <div class="row">
-                        <button class="btn btn-xs  btn-outline-secondary m-0 btn-reload col-12" (click)="onNextPlayer(i)" >
-                            <i class="fas fa-sync"></i>                        
-                        </button>
+
+                <div class="otherRosco  circle-container-sm" [class.hidden]="player.get('active')!.value !== false" [ngClass]="{'orange' : i!==0}">
+
+                    <div class="nextPlayer" [class.hidden]="player.get('active')!.value !== false" >
+                        <div class="row">
+                            <button class="btn btn-xs  btn-outline-secondary m-0 btn-reload col-12" (click)="onNextPlayer(i)" >
+                                <i class="fas fa-sync"></i>                        
+                            </button>
+                        </div>
                     </div>
+
+                    <ul class="circle circle-sm">
+                        <li class="item" 
+                            
+                            [class.item-success]="letter.get('status')!.value === 2" 
+                            [class.item-failure]="letter.get('status')!.value === 3" 
+                            [class.item-nexttime]="letter.get('status')!.value === 4"
+                            *ngFor="let letter of getPlayerItems(player)!.controls; let k = index;">
+                            {{letter.get('letter')!.value}}
+                        </li>
+                    </ul>
+
+                    <h4 class="text-center " >
+                        {{player.get('name')!.value}}
+                    </h4>
+
                 </div>
                 
 
