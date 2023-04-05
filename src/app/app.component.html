@@ -37,13 +37,13 @@
         <div  formArrayName="players" style=" flex: 1 1;" *ngIf="startedGame">
             <ng-container   *ngFor="let player of players.controls; let i = index;" formGroupName="{{i}}" >
               
-                <fieldset class="otherPlayer" [class.hidden]="player.get('active')!.value !== false" [ngClass]="{'orange' : i!==0}">
-                    <small  style="display: none;" >En espera:</small>
-                    <h4 class="text-center " style="display: none;">
+                <fieldset class="otherPlayer d-block d-sm-none" [class.hidden]="player.get('active')!.value !== false" [ngClass]="{'orange' : i!==0}">
+                    <small>En espera:</small>
+                    <h4 class="text-center " >
                         {{player.get('name')!.value}}
                     </h4>
                     <div class="w100"></div>
-                    <label class=" timer ">
+                    <label class=" timeleft ">
                         {{player.get('playTime')!.value | number: '1.0-0'}}
                     </label>
                     <label class="  corrects">
@@ -55,17 +55,11 @@
                 </fieldset>
 
 
-                <div class="otherRosco  circle-container-sm" [class.hidden]="player.get('active')!.value !== false" [ngClass]="{'orange' : i!==0}">
+                <div class="otherRosco  circle-container-sm d-none d-sm-block" *ngIf="player.get('active')!.value === false" [ngClass]="{'orange' : i!==0}">
 
-                    <div class="nextPlayer" [class.hidden]="player.get('active')!.value !== false" >
-                        <div class="row">
-                            <button class="btn btn-xs  btn-outline-secondary m-0 btn-reload col-12" (click)="onNextPlayer(i)" >
-                                <i class="fas fa-sync"></i>                        
-                            </button>
-                        </div>
-                    </div>
+                    <small >En espera:</small>
 
-                    <ul class="circle circle-sm">
+                    <ul class="circle circle-sm" >
                         <li class="item" 
                             
                             [class.item-success]="letter.get('status')!.value === 2" 
@@ -80,10 +74,29 @@
                         {{player.get('name')!.value}}
                     </h4>
 
+                    <fieldset class="otherPlayer "  [ngClass]="{'orange' : i!==0}">
+                        
+                        <label class=" timeleft ">
+                            {{player.get('playTime')!.value | number: '1.0-0'}}
+                        </label>
+                        <label class="  corrects">
+                            {{player.get('correctAnswers')!.value}}
+                        </label>
+                        <label class="  fails">
+                            {{player.get('failAnswers')!.value}}
+                        </label>  
+                    </fieldset>
                 </div>
                 
+                <div class="nextPlayer" [class.hidden]="player.get('active')!.value !== false" >
+                    <div class="row">
+                        <button class="btn btn-xs  btn-outline-secondary m-0 btn-reload col-12" (click)="onNextPlayer(i)" >
+                            <i class="fas fa-sync"></i>                        
+                        </button>
+                    </div>
+                </div>
 
-                <div class="wildcard" [class.hidden]="player.get('active')!.value === false"  formArrayName="wildcards" >
+                <div class="wildcard" *ngIf="player.get('active')!.value === false"  formArrayName="wildcards" >
                     <div *ngFor="let item of player.get('wildcards')!.value; let w = index;" formGroupName="{{w}}">
                         <div class="item-wildcard" (click)="onWildCardChange(i, w)" [class.used]="!item">
                           <i class="far fa-smile"></i>
@@ -109,7 +122,7 @@
                                 {{item.get('letter')!.value}} 
                             </label>
 
-                            <div class="manager-box" >
+                            <div class="manager-box" [class.hidden]="player.get('gameOver')!.value !== false">
                                 <div class="row">
                                     <button class="btn btn-xs  btn-primary col-12 m-0" (click)="onStartPlay(i)" *ngIf="player.get('isTimerPaused')!.value">
                                         <i class="fas fa-play"  ></i>  
@@ -136,8 +149,8 @@
                     
                  
                     <div class=" circle-container " >
-                        <ul class="circle">
-                            <li class="item" (click)="onChangeAnswer(i,k)"
+                        <ul class="circle" >
+                            <li class="item" (click)="onChangeAnswer(i,k)" 
                                 [class.item-active]="letter.get('status')!.value === 1" 
                                 [class.item-success]="letter.get('status')!.value === 2" 
                                 [class.item-failure]="letter.get('status')!.value === 3" 

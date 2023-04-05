@@ -214,6 +214,8 @@ button{
 
 	//border-style: none;
 
+	
+
 	h3 {
 		margin: 0;
 	}
@@ -221,7 +223,7 @@ button{
 	h1{
 		margin: auto;
 		color: #004b8d;
-
+		animation: fade 2s linear;
 	}
 }
 
@@ -390,12 +392,19 @@ button{
 
 .circle-sm{
 	@include on-circle($nb-items, $s-circle-sm, $s-item-sm);
-	position: absolute;
-	top: 25%;
-	left: 8.5%;
+	//position: absolute;
+	//top: 25%;
+	//left: 8.5%;
 	margin: 0;
 	transform: translate(-50%, -50%);
 	font-size: $s-item-sm/2;
+
+	position: relative;
+	top: inherit;
+
+	//animation: grow-rosco 0.67s linear;
+
+	animation: fade 2s linear;
 
 	border-style: none;
 	//width: 10vw;
@@ -412,15 +421,88 @@ button{
 
 .otherRosco{
 
+	position: absolute;
+	width: 15vw;
+	min-height: 100px;
+	//border-style: solid;
+
+	top: 12vh;
+	//left: 8.5%;
+	border-radius: 15px;
+	border-color: #5C4220;
+	border-width: 0.2px;
+	background-color: lightgrey;
+
+	
+	//animation: fade 2s linear;
+
+	//animation: grow 0.67s linear;
+
+	small{
+		padding-top: 1vh;
+		width: 100%;
+		text-align: center;
+		display: block;
+	}
+
 	h4{
 		//background-color: #8e001c;
 		position: absolute;
-		top: 24%;
-		width: 15%;
+		top: 40%;
+		width: 100%;
 		//border-style: double;
 		color: #004b8d;
+		animation: fade 2s linear;
+	}
+
+	.otherPlayer{
+		position: relative;
+		top: 0;
+		margin-top: 5vh;
+
+		.timeleft,
+		.corrects,
+		.fails{
+			animation: fade 2s linear;
+		}
 	}
 }
+
+@keyframes fade {
+	0% { opacity: 0 }
+  	50% { opacity: 0.5 }
+	100% { opacity: 1 }
+}
+
+@keyframes grow {
+	0% {transform: scale(0.33); }
+  	50% { transform: scale(0.67); }
+	100% { transform: scale(1); }
+}
+
+@keyframes grow-rosco {
+	0% {
+		transform: translate(-50%, -50%);
+		transform: scale(0.33); 
+	}
+  	50% { transform: translate(-50%, -50%);
+		transform: scale(0.67); }
+	100% { transform: translate(-50%, -50%);
+		transform: scale(1); }
+}
+
+
+@keyframes slidein {
+	from {
+	  margin-left: 50%;
+	  width: 100%
+	}
+  
+	to {
+	  margin-left: 0%;
+	  width: 100%;
+	}
+  }
 
 .circle1 {
     float: left;
@@ -580,7 +662,7 @@ button{
 		width: 100%;
 	}
 
-	.timer{
+	.timeleft{
 		background-image: radial-gradient(circle, $c-base, $c-base-darker);
 		width: 33%;
 	}

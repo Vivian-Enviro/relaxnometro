@@ -223,6 +223,8 @@ export class AppComponent  implements OnInit {
         player.get("isTimerPaused")!.setValue(true);
       }
     }
+
+    this.recountAnswers(gameIndex);
   }
 
   onNextPlayer(gameIndex:number){
@@ -335,6 +337,7 @@ export class AppComponent  implements OnInit {
     let player = this.players.at(gameIndex);
     let answers = 0;
     let fails = 0;
+    let playTime = 0;
     for (let i=0; i< this.getPlayerItems(player).length;i++){
       let item = this.getPlayerItems(player).at(i);
       if (item.get("status")!.value === GlassAnswerStatus.Correct){
@@ -344,9 +347,10 @@ export class AppComponent  implements OnInit {
         fails++;
       }
     }
+    playTime = player.get('playTime')!.value;
     player.get("correctAnswers")!.setValue(answers);
     player.get("failAnswers")!.setValue(fails);
-    player.get("gameOver")!.setValue(fails+answers==25);
+    player.get("gameOver")!.setValue(fails+answers==25 || playTime==0);
   }
   
   foundNextActiveLetter(itemIndex : number, player: AbstractControl): any{
