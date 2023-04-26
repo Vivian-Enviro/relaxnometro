@@ -44,7 +44,7 @@
                     </h4>
                     <div class="w100"></div>
                     <label class=" timeleft ">
-                        {{player.get('playTime')!.value | number: '1.0-0'}}
+                        {{player.get('playTime')!.value | number: '1.0-0'}} B
                     </label>
                     <label class="  corrects">
                         {{player.get('correctAnswers')!.value}}
@@ -85,6 +85,9 @@
                         <label class="  fails">
                             {{player.get('failAnswers')!.value}}
                         </label>  
+                        <label class=" item-wildcard " style="display:none">
+                            {{player.get('playTime')!.value | number: '1.0-0'}}
+                        </label>
                     </fieldset>
                 </div>
                 

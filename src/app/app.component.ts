@@ -79,7 +79,7 @@ export class AppComponent  implements OnInit {
       player2               : ["Jugador 2", [Validators.required]],
       seconds               : [140, [Validators.required]],
       playerCount           : [this.game.playerCount, [Validators.required]],
-      wildcard              : [1, [Validators.required]],
+      wildcard              : [2, [Validators.required]],
 
       letterContains        : this._formBuilder.array([
 
@@ -217,10 +217,17 @@ export class AppComponent  implements OnInit {
     if (!player.get("isTimerPaused")!.value){
       let playTime = player.get("playTime")!.value;
       playTime = playTime-0.2;
-      if (playTime >= 0)
+      if (playTime > 0  ) //Aqui estoy
         player.get("playTime")!.setValue(playTime);
       else{
+        
+        this.recountAnswers(gameIndex);
+
         player.get("isTimerPaused")!.setValue(true);
+        
+        //alert("asdfghjkdfghjdfghj");
+        //player.get("gameOver")!.setValue(true);
+        //alert("asdfghjkdfghjdfghj:"+ player.get("gameOver")!.value);
       }
     }
 
@@ -350,7 +357,13 @@ export class AppComponent  implements OnInit {
     playTime = player.get('playTime')!.value;
     player.get("correctAnswers")!.setValue(answers);
     player.get("failAnswers")!.setValue(fails);
-    player.get("gameOver")!.setValue(fails+answers==25 || playTime==0);
+    player.get("gameOver")!.setValue(fails+answers==25 || playTime<=0);
+
+    if (fails+answers==25 || playTime<=0){
+      player.get("isTimerPaused")!.setValue(true);
+     // player.get("gameOver")!.setValue(true);
+    }
+      
   }
   
   foundNextActiveLetter(itemIndex : number, player: AbstractControl): any{

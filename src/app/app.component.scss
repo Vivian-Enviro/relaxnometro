@@ -667,17 +667,27 @@ button{
 	.timeleft{
 		background-image: radial-gradient(circle, $c-base, $c-base-darker);
 		width: 33%;
+
+		/*width: 2vw;
+		border-radius: 50%;
+		padding-right: 3px;
+		height: 2vw;
+		align-items: center;
+		display: inline-grid;*/
+
 	}
 
 	.corrects{
 		background-image: radial-gradient(circle, $c-success, $c-success-darker);
 		width: 33%;
 		color: black;
+		//width: 25%;
 	}
 
 	.fails{
 		background-image: radial-gradient(circle, $c-failure, $c-failure-darker);
 		width: 33%;
+		//width: 25%;
 	}
 }
 
@@ -689,6 +699,22 @@ button{
 		color: #b64926;
 	}
 	
+}
+
+.item-wildcard  {
+	border-style: solid;
+	//width: $s-item;
+	//height: $s-item;
+	//line-height: $s-item;
+	border: 2px solid $c-white;
+	border-radius: 50%;
+	background-image: radial-gradient(circle, magenta	, purple);
+	color: yellow;
+
+	width: 2vw;
+	height: 2vw;
+	align-items: center;
+	display: inline-grid;
 }
 
 .wildcard{
@@ -705,14 +731,14 @@ button{
 	bottom: 4vh;
 	
 	.item-wildcard  {
-		border-style: solid;
+		//border-style: solid;
 		width: $s-item;
 		height: $s-item;
 		line-height: $s-item;
-		border: 2px solid $c-white;
-		border-radius: 50%;
-		background-image: radial-gradient(circle, magenta	, purple);
-		color: yellow;
+		//border: 2px solid $c-white;
+		//border-radius: 50%;
+		//background-image: radial-gradient(circle, magenta	, purple);
+		//color: yellow;
 	}
 
 	.used{
