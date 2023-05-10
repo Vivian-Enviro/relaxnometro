@@ -291,6 +291,12 @@ export class AppComponent  implements OnInit {
 
     this.recountAnswers(gameIndex);
 
+    let isActive = false;
+
+    console.log("Correctas: ",player.get("correctAnswers")!.value ,"/n",
+                " Fallos: ", player.get("failAnswers")!.value, "/n",
+                " Game Over:", player.get("gameOver")!.value
+            );
     if  ( player.get("correctAnswers")!.value + player.get("failAnswers")!.value >=24 && 
       (this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.Active ||
       this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.Pending ||
@@ -321,10 +327,21 @@ export class AppComponent  implements OnInit {
     } 
 
     let nextItem = this.foundNextActiveLetter(-1, player);
+
+    console.log("nextItem: ",nextItem);
+
     if (nextItem !== undefined){
+      nextItem.get("status").setValue(GlassAnswerStatus.Active);
+    } else {
+      nextItem = this.foundNextActiveLetter(itemIndex, player);
       nextItem.get("status").setValue(GlassAnswerStatus.Active);
     }
     this.recountAnswers(gameIndex);
+
+    console.log("Correctas: ",player.get("correctAnswers")!.value ,"/n",
+    " Fallos: ", player.get("failAnswers")!.value, "/n",
+    " Game Over:", player.get("gameOver")!.value
+    );
   }
 
   onFail(gameIndex:number, itemIndex : number) {
