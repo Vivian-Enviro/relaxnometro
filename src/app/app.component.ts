@@ -202,6 +202,8 @@ export class AppComponent  implements OnInit {
     let playTime = player.get("playTime")!.value;
     playTime--;
     player.get("playTime")!.setValue(playTime);
+
+   // this.recountAnswers(gameIndex);
   }
 
   onAddTime(gameIndex:number){
@@ -209,6 +211,9 @@ export class AppComponent  implements OnInit {
     let playTime = player.get("playTime")!.value;
     playTime++;
     player.get("playTime")!.setValue(playTime);
+
+    player.get("gameOver")!.setValue(this.isGameOver(gameIndex));
+    //this.recountAnswers(gameIndex);
   }
 
   tick(gameIndex:number) :void{
@@ -217,21 +222,39 @@ export class AppComponent  implements OnInit {
     if (!player.get("isTimerPaused")!.value){
       let playTime = player.get("playTime")!.value;
       playTime = playTime-0.2;
-      if (playTime > 0  ) //Aqui estoy
+      
+      if (playTime < 0)
+          playTime = 0;
+
+      if (playTime > 0  ) {//Aqui estoy
         player.get("playTime")!.setValue(playTime);
-      else{
+
         
-        this.recountAnswers(gameIndex);
+       // console.log("Tiempo:",playTime);
+
+      }else{
+        
+        player.get("playTime")!.setValue(playTime);
+
+        //this.recountAnswers(gameIndex);
+
 
         player.get("isTimerPaused")!.setValue(true);
+
+        this.reproducir(gameIndex);
         
         //alert("asdfghjkdfghjdfghj");
         //player.get("gameOver")!.setValue(true);
         //alert("asdfghjkdfghjdfghj:"+ player.get("gameOver")!.value);
+
+        console.log("No hay  pra mas Tiempo:",playTime);
       }
+
+      this.recountAnswers(gameIndex);
+      
     }
 
-    this.recountAnswers(gameIndex);
+    //this.recountAnswers(gameIndex);
   }
 
   onNextPlayer(gameIndex:number){
@@ -332,10 +355,11 @@ export class AppComponent  implements OnInit {
 
     if (nextItem !== undefined){
       nextItem.get("status").setValue(GlassAnswerStatus.Active);
-    } else {
+    } /*else {
       nextItem = this.foundNextActiveLetter(itemIndex, player);
+      console.log("dentro nextItem: ",nextItem);
       nextItem.get("status").setValue(GlassAnswerStatus.Active);
-    }
+    }*/
     this.recountAnswers(gameIndex);
 
     console.log("Correctas: ",player.get("correctAnswers")!.value ,"/n",
@@ -344,6 +368,14 @@ export class AppComponent  implements OnInit {
     );
   }
 
+  reproducir(gameIndex:number) {
+    let audio = new Audio('assets/sound/asian-gong.mp3');
+
+    if (gameIndex > 0)
+      audio = new Audio('assets/sound/porky-eso-es-todo-amigos.mp3');
+    //porky-eso-es-todo-amigos
+    audio.play();
+  }
   onFail(gameIndex:number, itemIndex : number) {
     let player = this.players.at(gameIndex);
     let item = this.getPlayerItems(player).at(itemIndex);
@@ -374,13 +406,29 @@ export class AppComponent  implements OnInit {
     playTime = player.get('playTime')!.value;
     player.get("correctAnswers")!.setValue(answers);
     player.get("failAnswers")!.setValue(fails);
-    player.get("gameOver")!.setValue(fails+answers==25 || playTime<=0);
+   // player.get("gameOver")!.setValue(fails+answers==25 || playTime<=0);
+    player.get("gameOver")!.setValue(this.isGameOver(gameIndex));
 
-    if (fails+answers==25 || playTime<=0){
+  /*  if (fails+answers==25 || playTime<=0){
       player.get("isTimerPaused")!.setValue(true);
      // player.get("gameOver")!.setValue(true);
-    }
+    }*/
       
+  }
+
+  isGameOver(gameIndex:number): boolean{
+    let player = this.players.at(gameIndex);
+
+    let playTime = player.get('playTime')!.value;
+    let answers = player.get('correctAnswers')!.value;
+    let fails = player.get('failAnswers')!.value;
+
+    console.log("playTime:", playTime, " answers:",answers," fails:",fails," gameOver:",player.get('gameOver')!.value);
+
+    if (playTime <= 0) return true;
+    if (answers + fails === 25) return true;
+
+    return false;
   }
   
   foundNextActiveLetter(itemIndex : number, player: AbstractControl): any{

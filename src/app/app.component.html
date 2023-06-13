@@ -121,7 +121,7 @@
                     <div class="" formArrayName="playerItems" >
                         <div *ngFor="let item of getPlayerItems(player)!.controls; let j = index;" formGroupName="{{j}}" [class.hidden]="item.get('status')!.value !== 1">
                              
-                            <label class="col-10 extrasize circle1">
+                            <label class="col-10 extrasize circle1" *ngIf="player.get('gameOver')!.value !== true">
                                 {{item.get('letter')!.value}} 
                             </label>
 
