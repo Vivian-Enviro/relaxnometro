@@ -79,7 +79,7 @@ export class AppComponent  implements OnInit {
       player2               : ["Jugador 2", [Validators.required]],
       seconds               : [140, [Validators.required]],
       playerCount           : [this.game.playerCount, [Validators.required]],
-      wildcard              : [2, [Validators.required]],
+      wildcard              : [3, [Validators.required]],
 
       letterContains        : this._formBuilder.array([
 
@@ -155,7 +155,7 @@ export class AppComponent  implements OnInit {
       });
 
       for (let w = 0; w < this.searchForm.get("wildcard")!.value; w++){
-        const wildcard =  new FormControl(true);
+        const wildcard =  new FormControl(w>0);
         (player.get("wildcards") as FormArray).push(wildcard);
       }
 
@@ -369,10 +369,10 @@ export class AppComponent  implements OnInit {
   }
 
   reproducir(gameIndex:number) {
-    let audio = new Audio('assets/sound/asian-gong.mp3');
+    let audio = new Audio('assets/sound/ta-da_yrvBrlS.mp3');
 
-    if (gameIndex > 0)
-      audio = new Audio('assets/sound/porky-eso-es-todo-amigos.mp3');
+   /* if (gameIndex > 0)
+      audio = new Audio('assets/sound/porky-eso-es-todo-amigos.mp3');*/
     //porky-eso-es-todo-amigos
     audio.play();
   }
