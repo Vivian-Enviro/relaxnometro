@@ -351,15 +351,15 @@ export class AppComponent  implements OnInit {
 
     let nextItem = this.foundNextActiveLetter(-1, player);
 
-    console.log("nextItem: ",nextItem);
+   // console.log("nextItem: ",nextItem);
 
     if (nextItem !== undefined){
       nextItem.get("status").setValue(GlassAnswerStatus.Active);
-    } /*else {
+    } else {
       nextItem = this.foundNextActiveLetter(itemIndex, player);
       console.log("dentro nextItem: ",nextItem);
       nextItem.get("status").setValue(GlassAnswerStatus.Active);
-    }*/
+    }
     this.recountAnswers(gameIndex);
 
     console.log("Correctas: ",player.get("correctAnswers")!.value ,"/n",
