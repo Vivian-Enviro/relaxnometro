@@ -358,7 +358,7 @@ export class AppComponent  implements OnInit {
     } else {
       nextItem = this.foundNextActiveLetter(itemIndex, player);
       console.log("dentro nextItem: ",nextItem);
-      nextItem.get("status").setValue(GlassAnswerStatus.Active);
+      if (nextItem !== undefined) nextItem.get("status").setValue(GlassAnswerStatus.Active);
     }
     this.recountAnswers(gameIndex);
 
