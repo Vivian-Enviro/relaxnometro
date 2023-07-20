@@ -37,14 +37,14 @@
         <div  formArrayName="players" style=" flex: 1 1;" *ngIf="startedGame">
             <ng-container   *ngFor="let player of players.controls; let i = index;" formGroupName="{{i}}" >
               
-                <fieldset class="otherPlayer d-block d-sm-none" [class.hidden]="player.get('active')!.value !== false" [ngClass]="{'orange' : i!==0}">
+                <fieldset class="otherPlayer d-block d-sm-none" *ngIf="player.get('active')!.value === false" [ngClass]="{'orange' : i!==0}">
                     <small>En espera:</small>
                     <h4 class="text-center " >
-                        {{player.get('name')!.value}}
+                        {{player.get('name')!.value}} 
                     </h4>
                     <div class="w100"></div>
                     <label class=" timeleft ">
-                        {{player.get('playTime')!.value | number: '1.0-0'}} B
+                        {{player.get('playTime')!.value | number: '1.0-0'}}
                     </label>
                     <label class="  corrects">
                         {{player.get('correctAnswers')!.value}}
@@ -102,15 +102,29 @@
                 <div class="wildcard" *ngIf="player.get('active')!.value === false"  formArrayName="wildcards" >
                     <div *ngFor="let item of player.get('wildcards')!.value; let w = index;" formGroupName="{{w}}">
                         <div class="item-wildcard" (click)="onWildCardChange(i, w)" [class.used]="!item">
-                          <i class="far fa-smile" *ngif="player.get('wildcards')!.length !==3"></i>
-                          {{w==0?'MP':w==1?'CL':'OO'}}
+                        
+                            <i class="far fa-heart fa-lg" *ngIf="player.get('wildcards')!.value.length==3 && w===0"></i>
+                        
+                        
+                            <i class="far fa-copy fa-lg" *ngIf="player.get('wildcards')!.value.length==3 && w===1"></i>
+                        
+                            <i  class="far  fa-lightbulb  fa-lg" *ngIf="player.get('wildcards')!.value.length==3 && w===2"></i>
+                       
+                            <i class="far fa-smile fa-lg" *ngIf="player.get('wildcards')!.value.length!==3"></i>
+                          
                         </div>
                     </div>
                 </div>
               
                 <div style="height: 100%;" [class.hidden]="player.get('active')!.value === false" >
               
-                    <div class="player-name-text"  [ngClass]="{'orange' : i!==0}">
+                    <div class="player-name-text player-name-text-full d-none d-sm-block"  [ngClass]="{'orange' : i!==0}">
+                        <h3 class="hidden">Jugando</h3>
+                        <div class="w100" ></div>
+                        <h1 >{{player.get('name')!.value}}</h1>
+                    </div>
+
+                    <div class="player-name-text d-block d-sm-none"  [ngClass]="{'orange' : i!==0}">
                         <h3 >Jugando</h3>
                         <div class="w100" ></div>
                         <h1 >{{player.get('name')!.value}}</h1>
