@@ -230,6 +230,41 @@ button{
 		
 		animation: fade 2s linear;
 	}
+
+	fieldset {
+
+		padding-left: 2vw;
+		padding-right: 2vw;
+
+		.timeleft{
+			background-image: radial-gradient(circle, $c-base, $c-base-darker);
+			width: 33%;
+			color: white;
+			/*width: 2vw;
+			border-radius: 50%;
+			padding-right: 3px;
+			height: 2vw;
+			align-items: center;
+			display: inline-grid;*/
+	
+		}
+	
+		.corrects{
+			background-image: radial-gradient(circle, $c-success, $c-success-darker);
+			width: 33%;
+			color: black;
+			//width: 25%;
+		}
+	
+		.fails{
+			background-image: radial-gradient(circle, $c-failure, $c-failure-darker);
+			width: 33%;
+			color: white;
+			//width: 25%;
+		}
+
+	}
+	
 }
 
 .player-name-text-full{
@@ -240,10 +275,11 @@ button{
 	padding-top: 0;
 	padding-bottom: 0;
 
-	width: 50vw;
+	//width: 50vw;
 	background-color: transparent;
 	border-width: 0px;
 
+	top:1vw;
 }
 
 .player-name-text.orange{
@@ -411,7 +447,7 @@ button{
 
 .circle-sm{
 	@include on-circle($nb-items, $s-circle-sm, $s-item-sm);
-	//position: absolute;
+	position: absolute;
 	//top: 25%;
 	//left: 8.5%;
 	margin: 0;
@@ -446,6 +482,7 @@ button{
 	//border-style: solid;
 
 	top: 12vh;
+	//top: 14vh;
 	//left: 8.5%;
 	border-radius: 15px;
 	border-color: #5C4220;

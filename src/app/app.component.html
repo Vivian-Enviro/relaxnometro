@@ -118,16 +118,48 @@
               
                 <div style="height: 100%;" [class.hidden]="player.get('active')!.value === false" >
               
-                    <div class="player-name-text player-name-text-full d-none d-sm-block"  [ngClass]="{'orange' : i!==0}">
-                        <h3 class="hidden">Jugando</h3>
+                    <div class="player-name-text "  [ngClass]="{'orange' : i!==0}">
+                        <h3 style="display: none;">Jugando</h3>
                         <div class="w100" ></div>
                         <h1 >{{player.get('name')!.value}}</h1>
+                        <div class="w100" ></div>
+                        <fieldset style="display: none;" [ngClass]="{'orange' : i!==0}">
+                        
+                            <label class=" timeleft ">
+                                {{player.get('playTime')!.value | number: '1.0-0'}}
+                            </label>
+                            <label class="  corrects">
+                                {{player.get('correctAnswers')!.value}}
+                            </label>
+                            <label class="  fails">
+                                {{player.get('failAnswers')!.value}}
+                            </label>  
+                            <label class=" item-wildcard " style="display:none">
+                                {{player.get('playTime')!.value | number: '1.0-0'}}
+                            </label>
+                        </fieldset>
                     </div>
 
-                    <div class="player-name-text d-block d-sm-none"  [ngClass]="{'orange' : i!==0}">
-                        <h3 >Jugando</h3>
+                    <div class="player-name-text player-name-text-full d-none d-sm-block"  [ngClass]="{'orange' : i!==0}">
+                        <h3 style="display: none;">Jugando</h3>
                         <div class="w100" ></div>
-                        <h1 >{{player.get('name')!.value}}</h1>
+                        <h3 style="display: none;" >{{player.get('name')!.value}}</h3>
+                        
+                        <fieldset  [ngClass]="{'orange' : i!==0}">
+                        
+                            <label class=" timeleft ">
+                                {{player.get('playTime')!.value | number: '1.0-0'}}
+                            </label>
+                            <label class="  corrects">
+                                {{player.get('correctAnswers')!.value}}
+                            </label>
+                            <label class="  fails">
+                                {{player.get('failAnswers')!.value}}
+                            </label>  
+                            <label class=" item-wildcard " style="display:none">
+                                {{player.get('playTime')!.value | number: '1.0-0'}}
+                            </label>
+                        </fieldset>
                     </div>
                   
                     <label class="col-10 game-over-text circle1" *ngIf="player.get('gameOver')!.value === true">
