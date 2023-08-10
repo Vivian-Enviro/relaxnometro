@@ -57,6 +57,8 @@ export class AppComponent  implements OnInit {
   
   dataList : any ;
 
+  public lettersCount:number = 15;
+
   private interval:any;
   
   constructor(
@@ -77,9 +79,12 @@ export class AppComponent  implements OnInit {
 
       player1               : ["Jugador 1", [Validators.required]],
       player2               : ["Jugador 2", [Validators.required]],
-      seconds               : [140, [Validators.required]],
+      seconds               : [this.lettersCount===25?140:90, [Validators.required]],
       playerCount           : [this.game.playerCount, [Validators.required]],
-      wildcard              : [3, [Validators.required]],
+      wildcard              : [this.lettersCount===25?3:1, [Validators.required]],
+
+      playerletters1        : [this.availableLetter.toString().replace(/(,)/gm,"").trim(), [Validators.required]],
+      playerletters2        : [this.availableLetter.toString().replace(/(,)/gm,"").trim(), [Validators.required]],
 
       letterContains        : this._formBuilder.array([
 
@@ -102,12 +107,23 @@ export class AppComponent  implements OnInit {
       player.playerItems = [];
       player.correctAnswers = 0;
 
-      this.availableLetter.forEach(letter => {
+      
 
-        let item = new GlassPlayerItem();
-        item.letter = letter;
+      let stringletters =  i===0?(this.searchForm.get("playerletters1")!.value as string).replace(/(,)/gm,"").trim():(this.searchForm.get("playerletters2")!.value as string).replace(/(,)/gm,"").trim();
+
+      console.log("letras:",stringletters);
+
+      let availables: string[] = stringletters.split("",this.lettersCount);
+
+      /*this.availableLetter.*/availables.forEach(letter => {
+
+        if (letter.trim().length>0){
+          let item = new GlassPlayerItem();
+          item.letter = letter;
+          
+          player.playerItems.push(item);
+        }
         
-        player.playerItems.push(item);
         
       });
 
@@ -155,7 +171,7 @@ export class AppComponent  implements OnInit {
       });
 
       for (let w = 0; w < this.searchForm.get("wildcard")!.value; w++){
-        const wildcard =  new FormControl(w>0);
+        const wildcard =  new FormControl(this.lettersCount===25?w>0:true);
         (player.get("wildcards") as FormArray).push(wildcard);
       }
 
@@ -426,7 +442,7 @@ export class AppComponent  implements OnInit {
     console.log("playTime:", playTime, " answers:",answers," fails:",fails," gameOver:",player.get('gameOver')!.value);
 
     if (playTime <= 0) return true;
-    if (answers + fails === 25) return true;
+    if (answers + fails === this.lettersCount) return true;
 
     return false;
   }
@@ -463,7 +479,7 @@ export class AppComponent  implements OnInit {
   private getNewGame(dictionaryId : number){
     var c = new GlassGame();
     c.players = [];
-    c.letterCount = 25;
+    c.letterCount = this.lettersCount;
     c.playerCount = 1;
     return c;
   }

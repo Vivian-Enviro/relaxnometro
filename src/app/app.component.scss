@@ -71,7 +71,7 @@ $w-score: 					$s-item * 2.25;//$s-item * 1.25;
 
 // Others
 // -----------------------------------------------------------------------------
-$nb-items: 25;
+$nb-items: 15;
 
 span {
     margin-left: 15px;
@@ -395,7 +395,7 @@ button{
 		width: $s-item;
 		height: $s-item;
 		transition: all .3s ease-in-out;
-		border: 2px solid $c-white;
+		border: 1px solid $c-white;
 		border-radius: 50%;
 		background-image: radial-gradient(circle, $c-base, $c-base-darker);
 		color: $c-white;
@@ -403,6 +403,10 @@ button{
 		text-align: center;
 		text-decoration: none;
 		cursor: default;
+
+		/*box-shadow: 3px 2px 5px 0px rgba(35,29,31,0.75);
+		-webkit-box-shadow: 3px 2px 5px 0px rgba(35,29,31,0.75);
+		-moz-box-shadow: 3px 2px 5px 0px rgba(35,29,31,0.75);*/
 
 		@media only screen  
 			and (min-width : 320px)  
@@ -427,8 +431,10 @@ button{
 
         &-active {
 			font-weight: bolder;
-			border-width: 4px;
+			//border-width: 4px;
 			border-style: double;
+			//color: black;
+			
 		}
 
         @keyframes blinkingText{

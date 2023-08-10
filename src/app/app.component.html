@@ -6,14 +6,24 @@
             <fieldset class="form-group col-6" style="background-color: white;">
                 <div class="row" style="border-radius: 15px;  align-items: center;">
                     <h2 class="col-form-label ">Configuración del Juego</h2>
-                    <label class="form-group has-float-label ">
+                    <label class="form-group has-float-label col-md-6">
                         <input type="text" class="form-control" formControlName="player1"  />
                         <span>Silla Azul</span>
                         <small class="invalid-feedback">Campo obligatorio</small>
                     </label>
-                    <label class="form-group has-float-label ">
+                    <label class="form-group has-float-label col-md-6" *ngIf="lettersCount!==25">
+                        <input type="text" class="form-control" formControlName="playerletters1"  />
+                        <span>Letras</span>
+                        <small class="invalid-feedback">Campo obligatorio</small>
+                    </label>
+                    <label class="form-group has-float-label col-md-6">
                         <input type="text" class="form-control" formControlName="player2"  />
                         <span>Silla Naranja</span>
+                        <small class="invalid-feedback">Campo obligatorio</small>
+                    </label>
+                    <label class="form-group has-float-label col-md-6" *ngIf="lettersCount!==25">
+                        <input type="text" class="form-control" formControlName="playerletters2"  />
+                        <span>Letras</span>
                         <small class="invalid-feedback">Campo obligatorio</small>
                     </label>
                     <label class="form-group has-float-label  col-md-6">
