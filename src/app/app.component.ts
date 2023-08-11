@@ -113,7 +113,7 @@ export class AppComponent  implements OnInit {
 
       console.log("letras:",stringletters);
 
-      let availables: string[] = stringletters.split("",this.lettersCount);
+      let availables: string[] = stringletters.replace(/( )/gm,"").split("",this.lettersCount);
 
       /*this.availableLetter.*/availables.forEach(letter => {
 
@@ -259,9 +259,7 @@ export class AppComponent  implements OnInit {
 
         this.reproducir(gameIndex);
         
-        //alert("asdfghjkdfghjdfghj");
         //player.get("gameOver")!.setValue(true);
-        //alert("asdfghjkdfghjdfghj:"+ player.get("gameOver")!.value);
 
         console.log("No hay  pra mas Tiempo:",playTime);
       }
@@ -293,7 +291,7 @@ export class AppComponent  implements OnInit {
     let item = this.getPlayerItems(player).at(itemIndex);
 
     this.recountAnswers(gameIndex);
-    if  ( player.get("correctAnswers")!.value + player.get("failAnswers")!.value >=24 && 
+    if  ( player.get("correctAnswers")!.value + player.get("failAnswers")!.value >=this.lettersCount-1 && 
       (this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.Active ||
       this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.Pending ||
       this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.NextTime 
@@ -336,7 +334,7 @@ export class AppComponent  implements OnInit {
                 " Fallos: ", player.get("failAnswers")!.value, "/n",
                 " Game Over:", player.get("gameOver")!.value
             );
-    if  ( player.get("correctAnswers")!.value + player.get("failAnswers")!.value >=24 && 
+    if  ( player.get("correctAnswers")!.value + player.get("failAnswers")!.value >=this.lettersCount-1 && 
       (this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.Active ||
       this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.Pending ||
       this.getPlayerItems(player).at(itemIndex).get("status")!.value === GlassAnswerStatus.NextTime 
