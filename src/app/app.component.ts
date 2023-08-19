@@ -57,7 +57,7 @@ export class AppComponent  implements OnInit {
   
   dataList : any ;
 
-  public lettersCount:number = 25;
+  public lettersCount:number = 15;
 
   private interval:any;
   
