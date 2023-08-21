@@ -57,7 +57,7 @@ export class AppComponent  implements OnInit {
   
   dataList : any ;
 
-  public lettersCount:number = 15;
+  public lettersCount:number = 25;
 
   private interval:any;
   
@@ -67,6 +67,8 @@ export class AppComponent  implements OnInit {
 
     this.game = this.getNewGame(0);
     this.game.playerCount = 2;
+
+
   }
 
   ngOnInit(): void {

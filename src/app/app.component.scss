@@ -1,3 +1,4 @@
+
 :host{
     display: flex;
     flex-direction: column;
@@ -5,6 +6,7 @@
     padding: 1vh 1vh 1vw 1vw;
 
 	font-size:1vw;
+	
 }
 
 h1{
@@ -71,7 +73,12 @@ $w-score: 					$s-item * 2.25;//$s-item * 1.25;
 
 // Others
 // -----------------------------------------------------------------------------
-$nb-items: 15;
+$nb-items: 25;
+
+
+
+//$nb-items: var(--nb-letters-count, 25);
+
 
 span {
     margin-left: 15px;
